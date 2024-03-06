@@ -1,13 +1,13 @@
-***Introduction***
+**Introduction**
 <br>
 Pulmonary function test (PFT) results appear in mostly unstructured or semi-structured text data in the VA Corporate Data Warehouse (CDW). To capture PFT results for a study on long-acting controller inhalers in a veteran population, we generated regular expression-based text processing code to extract pre-bronchodilator values of FEV1:FVC ratio, FEV1 percent of predicted value, and qualitative data describing spriometry results. These algorithms were generated on a facility-specific basis, so each file in this repository extracts data from a separate facility.
 
-***Methodology***
+**Methodology**
 <br>
 The general approach is as follows:
 <br>
 <br>
-***SQL***
+**SQL**
 <br>
 -Identify PFTs procedures completed for your cohort
 <br>
@@ -16,7 +16,7 @@ The general approach is as follows:
 -Export data to Excel
 <br>
 <br>
-***Python***
+**Python**
 <br>
 -Import the data into Python
 <br>
