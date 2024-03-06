@@ -145,4 +145,30 @@ WHERE
 	LOWER(ReportText) LIKE '%fev 1%' OR
 	LOWER(ReportText) LIKE '%fev1[_]%';
 
+/*
+Query all notes from specific facilities using dflt.pft_with_tiu_21days and "sta6a = xxx" in the WHERE clause. 
+You can use dflt.notes_with_fev_21days to calculate the proportion of notes from each facility with reference to
+an FEV1 value using the below code:
+*/
 
+--Count of PFTs performed by sta6a with count of PFTs containing FEV1 values in TIU Notes
+WITH DistinctPFTs AS (
+	SELECT t1.Sta6a, t1.PatientICN, t1.pft_date
+	FROM dflt.pft_with_tiu_21days t1
+	GROUP BY t1.Sta6a, t1.PatientICN, t1.pft_date
+),
+NotesWithFEV1 AS (
+	SELECT t2.Sta6a, t2.PatientICN, t2.pft_date
+	FROM dflt.notes_with_fev_21days t2
+	GROUP BY t2.Sta6a, t2.PatientICN, t2.pft_date
+)
+SELECT
+	d.Sta6a,
+	COUNT(*) AS TotalPFTs,
+	(SELECT COUNT(*) FROM NotesWithFEV1 n WHERE n.Sta6a = d.Sta6a) AS PFTsWithFEV1,
+	ROUND(CAST((SELECT COUNT(*) FROM NotesWithFEV1 n WHERE n.sta6a = d.sta6a) AS FLOAT) / COUNT(*) * 100, 2) AS percentage
+FROM DistinctPFTs d
+LEFT JOIN NotesWithFEV1 n
+	ON d.Sta6a = n.Sta6a AND d.PatientICN = n.PatientICN AND d.pft_date = n.pft_date
+GROUP BY d.Sta6a
+ORDER by TotalPFTs desc;
