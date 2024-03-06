@@ -151,7 +151,7 @@ You can use dflt.notes_with_fev_21days to calculate the proportion of notes from
 an FEV1 value using the below code:
 */
 
---Count of PFTs performed by sta6a with count of PFTs containing FEV1 values in TIU Notes
+--Count of PFTs performed, count of PFTs containing FEV1 values in TIU Notes, and percentage of PFTs with notes referencing FEV1, by sta6a
 WITH DistinctPFTs AS (
 	SELECT t1.Sta6a, t1.PatientICN, t1.pft_date
 	FROM dflt.pft_with_tiu_21days t1
