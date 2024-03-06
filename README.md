@@ -7,7 +7,7 @@ Pulmonary function test (PFT) results appear in mostly unstructured or semi-stru
 The general approach is as follows:
 <br>
 <br>
-**SQL**
+*SQL*
 <br>
 -Identify PFTs procedures completed for your cohort
 <br>
@@ -16,7 +16,7 @@ The general approach is as follows:
 -Export data to Excel
 <br>
 <br>
-**Python**
+*Python*
 <br>
 -Import the data into Python
 <br>
