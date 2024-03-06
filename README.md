@@ -2,6 +2,7 @@ Pulmonary function test (PFT) results appear in mostly unstructured or semi-stru
 
 The general approach is as follows:
 <br>
+<br>
 **SQL**
 <br>
 -Identify PFTs procedures completed for your cohort
@@ -9,6 +10,7 @@ The general approach is as follows:
 -Collate all TIU Notes from -1 through +21 days relative to the procedure
 <br>
 -Export data to Excel
+<br>
 <br>
 **Python**
 <br>
